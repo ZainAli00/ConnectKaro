@@ -1,0 +1,114 @@
+.ck-new-order {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(280px, 360px);
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.ck-new-order__card {
+  padding: 34px 36px;
+}
+
+.ck-new-order__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ck-new-order__heading-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 14px;
+  background: var(--mint-soft);
+  color: var(--mint-strong);
+}
+
+.ck-new-order__heading-title {
+  font-size: 19px;
+}
+
+.ck-new-order__heading-subtitle {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.ck-new-order__steps {
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: linear-gradient(165deg, var(--mint-soft), var(--card) 55%);
+}
+
+.ck-new-order__steps-title {
+  font-size: 15.5px;
+}
+
+.ck-new-order__steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ck-new-order__step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ck-new-order__step-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--mint-strong);
+}
+
+.ck-new-order__step-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.ck-new-order__step-body {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+.ck-new-order__steps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mint-strong);
+  margin-top: 4px;
+}
+.ck-new-order__steps-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 980px) {
+  .ck-new-order {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+}

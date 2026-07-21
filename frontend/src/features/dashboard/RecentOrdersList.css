@@ -1,0 +1,60 @@
+.ck-recent-orders {
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ck-recent-orders__title {
+  font-size: 16px;
+}
+
+.ck-recent-orders__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ck-recent-orders__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  transition: color 0.2s;
+}
+
+.ck-recent-orders__list li:last-child .ck-recent-orders__row {
+  border-bottom: none;
+}
+
+.ck-recent-orders__row:hover {
+  color: var(--mint-strong);
+}
+
+.ck-recent-orders__order-id {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ck-recent-orders__customer {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ck-recent-orders__meta,
+.ck-recent-orders__date {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .ck-recent-orders__row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

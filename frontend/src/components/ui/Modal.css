@@ -1,0 +1,63 @@
+.ck-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.ck-modal {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-big);
+  width: 100%;
+  max-width: 480px;
+  max-height: 88vh;
+  overflow-y: auto;
+  outline: none;
+}
+
+.ck-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ck-modal__title {
+  font-size: 18px;
+}
+
+.ck-modal__close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 14px;
+  flex: 0 0 34px;
+  transition: background .2s, color .2s;
+}
+.ck-modal__close:hover {
+  background: var(--mint-soft);
+  color: var(--mint-strong);
+}
+
+.ck-modal__body {
+  padding: 22px;
+}
+
+.ck-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 22px;
+  border-top: 1px solid var(--line);
+}

@@ -1,0 +1,141 @@
+.ck-order-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.ck-order-detail__card {
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ck-order-detail__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ck-order-detail__order-id {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.ck-order-detail__destination {
+  font-size: 24px;
+  color: var(--ink);
+  margin-top: 4px;
+}
+
+.ck-order-detail__plan {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.ck-order-detail__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Larger meter variant for the admin detail view (public UsageResultCard
+   uses the default size — see UsageMeter.css). */
+.ck-order-detail__meter .ck-usage-meter__track {
+  height: 20px;
+}
+.ck-order-detail__meter .ck-usage-meter__value {
+  font-size: 17px;
+}
+
+.ck-order-detail__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.ck-order-detail__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ck-order-detail__stat dt {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ck-order-detail__stat dd {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ck-order-detail__meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.ck-order-detail__refresh {
+  align-self: flex-start;
+}
+
+.ck-order-detail__section-title {
+  font-size: 16px;
+}
+
+.ck-order-detail__fields {
+  display: grid;
+  gap: 14px;
+}
+
+.ck-order-detail__fields > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ck-order-detail__fields dt {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ck-order-detail__fields dd {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.ck-order-detail__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .ck-order-detail__stats {
+    grid-template-columns: 1fr;
+  }
+}

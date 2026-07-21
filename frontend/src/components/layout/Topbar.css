@@ -1,0 +1,77 @@
+.ck-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 40px;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 6px 20px rgba(12, 60, 10, .05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+[data-theme="dark"] .ck-topbar {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+}
+
+.ck-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.ck-topbar__title {
+  font-size: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ck-topbar__menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4.5px;
+  flex: 0 0 40px;
+}
+.ck-topbar__menu-btn span {
+  display: block;
+  width: 17px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.ck-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ck-topbar__email {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 600;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .ck-topbar__email {
+    display: inline;
+  }
+}
+
+@media (max-width: 880px) {
+  .ck-topbar__menu-btn {
+    display: flex;
+  }
+}

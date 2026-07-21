@@ -1,0 +1,144 @@
+.ck-admin-login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+}
+
+/* ---------- branding panel ---------- */
+/* Theme-aware (unlike the admin Sidebar's fixed dark chrome): soft
+   mint-cream in light mode, deep green in dark mode — see --brand-panel-*
+   in tokens.css. */
+.ck-admin-login__brand {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--brand-panel-start), var(--brand-panel-end) 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  transition: background .3s;
+}
+
+.ck-admin-login__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 15%, rgba(255, 255, 255, .35), transparent 65%),
+    radial-gradient(ellipse 50% 45% at 85% 80%, rgba(168, 144, 31, .22), transparent 65%);
+}
+[data-theme="dark"] .ck-admin-login__glow {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 15%, rgba(143, 224, 126, .28), transparent 65%),
+    radial-gradient(ellipse 50% 45% at 85% 80%, rgba(168, 144, 31, .22), transparent 65%);
+}
+
+.ck-admin-login__brand-in {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.ck-admin-login__logo.ck-logo {
+  color: var(--brand-panel-ink);
+  font-size: 22px;
+}
+.ck-admin-login__logo.ck-logo b {
+  color: var(--mint-strong);
+}
+[data-theme="dark"] .ck-admin-login__logo.ck-logo b {
+  color: #8FE07E;
+}
+
+.ck-admin-login__pitch h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--brand-panel-ink);
+  line-height: 1.25;
+}
+
+.ck-admin-login__pitch p {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--brand-panel-ink-muted);
+  margin-top: 10px;
+  line-height: 1.6;
+  max-width: 340px;
+}
+
+/* ---------- form panel ---------- */
+.ck-admin-login__panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  padding: 28px 44px 32px;
+}
+
+.ck-admin-login__panel-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ck-admin-login__form-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  gap: 26px;
+}
+
+.ck-admin-login__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ck-admin-login__title {
+  font-size: 27px;
+  color: var(--ink);
+}
+
+.ck-admin-login__subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.ck-admin-login__footnote {
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .ck-admin-login {
+    grid-template-columns: 1fr;
+  }
+  .ck-admin-login__brand {
+    padding: 36px 32px;
+  }
+  .ck-admin-login__brand-in {
+    gap: 28px;
+  }
+  .ck-admin-login__esim-card {
+    display: none;
+  }
+  .ck-admin-login__pitch h1 {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ck-admin-login__panel {
+    padding: 24px 24px 28px;
+  }
+}

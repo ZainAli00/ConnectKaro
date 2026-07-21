@@ -1,0 +1,20 @@
+.ck-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 48px 24px;
+  color: var(--muted);
+}
+
+.ck-empty__icon {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.ck-empty__message {
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 340px;
+}

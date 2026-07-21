@@ -1,0 +1,177 @@
+.ck-order-table {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ck-order-table__card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ck-order-table__scroll {
+  overflow-x: auto;
+}
+
+.ck-order-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+}
+
+.ck-order-table__table thead {
+  background: var(--paper-2);
+}
+
+[data-theme="dark"] .ck-order-table__table thead {
+  background: rgba(255, 255, 255, .04);
+}
+
+.ck-order-table__table th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 16px 18px;
+  border-bottom: 1.5px solid var(--line);
+  white-space: nowrap;
+}
+
+.ck-order-row td {
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  vertical-align: middle;
+}
+
+.ck-order-row--striped td {
+  background: var(--paper-2);
+}
+[data-theme="dark"] .ck-order-row--striped td {
+  background: rgba(255, 255, 255, .025);
+}
+
+.ck-order-row:hover td {
+  background: var(--mint-soft);
+}
+
+.ck-order-row:last-child td {
+  border-bottom: none;
+}
+
+.ck-order-row__order-id {
+  font-weight: 700;
+}
+
+.ck-order-row__usage-cell {
+  min-width: 170px;
+}
+
+.ck-order-row__view {
+  font-weight: 700;
+  color: var(--mint-strong);
+}
+.ck-order-row__view:hover {
+  text-decoration: underline;
+}
+
+.ck-order-table__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ck-order-table__count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.ck-order-table__pager-btns {
+  display: flex;
+  gap: 8px;
+}
+
+/*
+ * Responsive card list below ~720px: each <tr> becomes a bordered card and
+ * each <td> a labeled row, the label coming from that cell's own
+ * `data-label` attribute (set in OrderTableRow.jsx) — no separate mobile
+ * markup or JS breakpoint logic needed.
+ */
+@media (max-width: 720px) {
+  .ck-order-table__card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .ck-order-table__table,
+  .ck-order-table__table tbody,
+  .ck-order-table__table tr,
+  .ck-order-table__table td {
+    display: block;
+    width: 100%;
+  }
+
+  .ck-order-table__table {
+    min-width: 0;
+  }
+
+  .ck-order-table__table thead {
+    display: none;
+  }
+
+  .ck-order-row {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+    padding: 6px 14px;
+    margin-bottom: 14px;
+  }
+
+  .ck-order-row:hover td,
+  .ck-order-row--striped td {
+    background: transparent;
+  }
+
+  .ck-order-row td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0;
+    text-align: right;
+  }
+
+  .ck-order-row td:last-child {
+    border-bottom: none;
+  }
+
+  .ck-order-row td[data-label]::before {
+    content: attr(data-label);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-align: left;
+  }
+
+  .ck-order-row__usage-cell {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .ck-order-row__actions {
+    justify-content: flex-end;
+  }
+}

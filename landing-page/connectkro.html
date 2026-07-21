@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>connectkro.pk — Global eSIM Data. Land Connected.</title>
+<meta name="description" content="Instant global data eSIMs for Türkiye, Malaysia, Saudi Arabia, UAE, Pakistan & 100+ destinations. No physical SIM. Delivered to WhatsApp or Email in minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="Logo.jpeg">
+<link rel="apple-touch-icon" href="Logo.jpeg">
+<style>
+:root, [data-theme="light"]{
+  --paper:#FBF5DD;
+  --paper-rgb:251,245,221;
+  --card-rgb:255,253,244;
+  --paper-2:#E7E0B2;
+  --ink:#12380E;
+  --ink-soft:#1C4A17;
+  --card:#FFFDF4;
+  --mint:#306D28;
+  --mint-strong:#0C530D;
+  --mint-soft:rgba(48,109,40,.12);
+  --gold:#A8901F;
+  --gold-soft:rgba(168,144,31,.14);
+  --rose:#8A6D1F;
+  --rose-soft:rgba(138,109,31,.12);
+  --muted:#5E6B4A;
+  --line:rgba(18,56,14,.15);
+  --shadow:0 18px 50px rgba(12,60,10,.10);
+  --shadow-big:0 30px 80px rgba(12,60,10,.16);
+  --nav-bg:rgba(251,245,221,.88);
+  --chip-bg:#FFFDF4;
+  --hero-glow-a:rgba(48,109,40,.14);
+  --hero-glow-b:rgba(168,144,31,.13);
+}
+
+/* --- Dark mode --- */
+[data-theme="dark"]{
+  --paper:#12220F;
+  --paper-rgb:18,34,15;
+  --card-rgb:24,43,20;
+  --paper-2:#1C321A;
+  --ink:#EAF3E4;
+  --ink-soft:#C9D9C2;
+  --card:#182B14;
+  --mint:#5FB352;
+  --mint-strong:#3FA636;
+  --mint-soft:rgba(95,179,82,.16);
+  --gold:#C9A93B;
+  --gold-soft:rgba(201,169,59,.16);
+  --rose:#C98A5C;
+  --rose-soft:rgba(201,138,92,.14);
+  --muted:#9FB090;
+  --line:rgba(234,243,228,.14);
+  --shadow:0 18px 50px rgba(0,0,0,.35);
+  --shadow-big:0 30px 80px rgba(0,0,0,.5);
+  --nav-bg:rgba(18,34,15,.88);
+  --chip-bg:#182B14;
+  --hero-glow-a:rgba(95,179,82,.16);
+  --hero-glow-b:rgba(201,169,59,.15);
+}
+.theme-toggle{
+  width:44px;height:44px;min-width:44px;border-radius:50%;
+  border:1.5px solid var(--line);background:var(--card);
+  display:grid;place-items:center;font-size:17px;flex:0 0 44px;
+  transition:border-color .3s,transform .25s;
+}
+.theme-toggle:hover{border-color:var(--mint);transform:translateY(-2px)}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:'Manrope',sans-serif;font-size:17px;line-height:1.65;
+  overflow-x:hidden;transition:background .45s,color .45s;
+}
+::selection{background:var(--mint);color:#fff}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:'Unbounded',sans-serif;line-height:1.14;font-weight:800;letter-spacing:-.01em}
+.mono{font-family:'IBM Plex Mono',monospace}
+.urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+section{padding:104px 0;position:relative}
+
+.bg-glow{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;transition:opacity .5s;
+  background:
+    radial-gradient(ellipse 75% 55% at 50% -10%, var(--hero-glow-a), transparent 60%),
+    radial-gradient(ellipse 42% 34% at 90% 34%, var(--hero-glow-b), transparent 65%),
+    radial-gradient(ellipse 42% 34% at 6% 78%, var(--rose-soft), transparent 65%);
+}
+.bg-dots{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(var(--line) 1px, transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(to bottom, black 0%, transparent 70%);
+  -webkit-mask-image:linear-gradient(to bottom, black 0%, transparent 70%);
+}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mint-strong);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;font-weight:600;
+}
+.eyebrow.gold{color:var(--gold)}
+.eyebrow.rose{color:var(--rose)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.32s}.rv.d4{transition-delay:.44s}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid transparent;transition:all .35s}
+nav.scrolled{background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:19px;display:flex;align-items:baseline;gap:7px}
+.logo b{color:var(--mint-strong)}
+.logo .urdu{font-size:15px;color:var(--gold);font-weight:700;transform:translateY(2px)}
+.nav-links{display:flex;gap:28px;font-weight:700;font-size:15px}
+.nav-links a{color:var(--muted);transition:color .25s;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--mint);transition:width .3s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;gap:12px;align-items:center}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:15px;
+  padding:14px 26px;border-radius:999px;border:none;position:relative;overflow:hidden;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;
+}
+.btn:hover{transform:translateY(-2px) scale(1.02)}
+.btn:active{transform:scale(.98)}
+.btn-mint{background:linear-gradient(115deg,#306D28,#0C530D);color:#FBF5DD}
+.btn-mint:hover{box-shadow:0 14px 36px rgba(12,83,13,.4)}
+.btn-gold{background:var(--gold);color:#2A1900}
+.btn-gold:hover{box-shadow:0 14px 36px rgba(232,155,28,.4)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--mint);color:var(--mint-strong)}
+.btn .arr{transition:transform .3s}
+.btn:hover .arr{transform:translateX(5px)}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 70px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(37px,5.1vw,62px)}
+.hero h1 .hl{background:linear-gradient(92deg,#306D28 5%,#0C530D 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--muted);font-size:19px;max-width:540px;margin:22px 0 28px;font-weight:600}
+.dest-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.dchip{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;
+  background:var(--chip-bg);border:1.5px solid var(--line);font-weight:800;font-size:14px;
+  box-shadow:0 4px 14px rgba(12,60,10,.07);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),border-color .3s,box-shadow .3s;
+}
+.dchip:hover{transform:translateY(-3px) scale(1.04);border-color:var(--mint);box-shadow:0 10px 24px rgba(48,109,40,.2)}
+.dchip .fr{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mint-strong);font-weight:600}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-trust{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.stat .n{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:25px}
+.stat .n b{color:var(--mint-strong);font-weight:600}
+.stat .l{font-size:12.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:3px;font-weight:700}
+.urdu-stamp{
+  position:absolute;right:34px;top:110px;font-family:'Noto Nastaliq Urdu',serif;
+  font-size:clamp(90px,12vw,168px);line-height:1.4;color:transparent;
+  -webkit-text-stroke:1.1px var(--line);pointer-events:none;user-select:none;
+  animation:floaty 7s ease-in-out infinite;
+}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+.hero-vis{position:relative;height:520px}
+#arcCanvas{position:absolute;inset:0;width:100%;height:100%}
+.orbit{position:absolute;left:50%;top:50%;border:1.5px dashed var(--line);border-radius:50%;pointer-events:none}
+.orbit.o1{width:400px;height:400px;transform:translate(-50%,-50%);animation:spin 42s linear infinite}
+.orbit.o2{width:520px;height:520px;transform:translate(-50%,-50%);animation:spin 74s linear infinite reverse}
+.orbit .sat{position:absolute;top:-8px;left:50%;width:15px;height:15px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+.orbit.o2 .sat{background:var(--rose);box-shadow:0 0 16px var(--rose)}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.esim-card{
+  position:absolute;left:50%;top:50%;width:302px;height:188px;transform:translate(-50%,-50%);
+  border-radius:20px;padding:22px;background:linear-gradient(135deg,#1A6B1C,#06300A 62%);
+  border:1px solid rgba(231,224,178,.5);color:#FBF5DD;
+  box-shadow:var(--shadow-big),inset 0 1px 0 rgba(255,255,255,.1);
+  transition:transform .15s ease-out;will-change:transform;
+}
+.esim-card::before{
+  content:"";position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(120deg,transparent 30%,rgba(231,224,178,.22) 45%,transparent 60%);
+  background-size:250% 100%;animation:sheen 4.5s linear infinite;
+}
+@keyframes sheen{0%{background-position:180% 0}100%{background-position:-80% 0}}
+.esim-card .chip{width:44px;height:34px;border-radius:7px;background:linear-gradient(135deg,#E7E0B2,#A8901F);position:relative}
+.esim-card .chip::after{content:"";position:absolute;inset:6px;border:1.5px solid rgba(60,35,0,.5);border-radius:4px}
+.esim-card .cname{font-family:'Unbounded',sans-serif;font-weight:600;font-size:15px;margin-top:20px}
+.esim-card .cname b{color:#E7E0B2}
+.esim-card .cid{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#A8C79A;margin-top:6px;letter-spacing:.12em}
+.esim-card .sig{position:absolute;right:20px;top:20px;display:flex;align-items:flex-end;gap:3px;height:20px}
+.esim-card .sig i{width:4px;background:#8FD87B;border-radius:2px;animation:sig 1.4s ease-in-out infinite}
+.esim-card .sig i:nth-child(1){height:30%}.esim-card .sig i:nth-child(2){height:55%;animation-delay:.15s}
+.esim-card .sig i:nth-child(3){height:78%;animation-delay:.3s}.esim-card .sig i:nth-child(4){height:100%;animation-delay:.45s}
+@keyframes sig{0%,100%{opacity:.35;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ticker */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0;overflow:hidden;background:var(--paper-2)}
+.ticker-track{display:flex;gap:52px;width:max-content;animation:tick 38s linear infinite}
+.ticker span{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--muted);white-space:nowrap;display:flex;gap:10px;align-items:center;font-weight:500}
+.ticker span b{color:var(--mint-strong);font-weight:600}
+.ticker span::before{content:"◆";color:var(--gold);font-size:8px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* destination explorer */
+.dest-head{text-align:center;max-width:680px;margin:0 auto 46px}
+.dest-head h2{font-size:clamp(30px,3.8vw,46px)}
+.dest-head p{color:var(--muted);font-size:18px;margin-top:16px;font-weight:600}
+.dest-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.dtab{
+  display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;
+  border:1.5px solid var(--line);background:rgba(var(--card-rgb),.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-weight:800;font-size:15px;color:var(--ink);
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+}
+.dtab:hover{transform:translateY(-3px);border-color:var(--mint)}
+.dtab.active{background:linear-gradient(120deg,var(--mint),var(--mint-strong));color:#fff;border-color:transparent;box-shadow:0 10px 28px rgba(48,109,40,.35);transform:translateY(-2px)}
+.dest-panel{max-width:1180px;margin:0 auto}
+.dest-meta{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:20px 26px;border-radius:18px;background:var(--card);border:1px solid var(--line);
+  box-shadow:var(--shadow);margin-bottom:26px;
+}
+.dest-meta .place{display:flex;align-items:center;gap:14px}
+.dest-meta .flag{font-size:38px;line-height:1}
+.dest-meta h3{font-size:19px}
+.dest-meta .cov{font-size:13.5px;color:var(--muted);font-weight:600}
+.dest-meta .from{font-family:'IBM Plex Mono',monospace;color:var(--mint-strong);font-weight:600;font-size:15px}
+.pkg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pkg{
+  background:var(--card);
+  border:1.5px solid var(--line);border-radius:20px;padding:26px 22px;text-align:center;
+  position:relative;overflow:hidden;box-shadow:var(--shadow);
+  opacity:0;transform:translateY(24px) scale(.97);
+  transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s;
+}
+.pkg.show{opacity:1;transform:none}
+.pkg:hover{border-color:var(--mint);box-shadow:var(--shadow-big);transform:translateY(-8px)!important}
+.pkg.best{border-color:var(--gold)}
+.pkg .ribbon{
+  position:absolute;top:14px;right:-34px;transform:rotate(38deg);background:var(--gold);color:#2A1900;
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;padding:5px 40px;text-transform:uppercase;
+}
+.pkg .gb{font-family:'Unbounded',sans-serif;font-weight:800;font-size:36px}
+.pkg .gb small{font-size:14px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-weight:400}
+.pkg .days{font-size:13px;color:var(--muted);font-weight:700;margin-top:2px}
+.pkg .price{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;color:var(--mint-strong);margin:12px 0 0}
+.pkg .per{font-size:12px;color:var(--muted);font-weight:600;margin:6px 0 18px}
+.pkg .btn{width:100%;padding:12px}
+.dest-note{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:22px;font-weight:600;background:rgba(var(--card-rgb),.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 20px;border-radius:14px;border:1px solid var(--line);max-width:860px;margin-left:auto;margin-right:auto}
+.dest-hint{text-align:center;color:var(--muted);font-size:14px;font-weight:600;margin-bottom:26px}
+.dest-hint a{color:var(--mint-strong);text-decoration:underline;text-underline-offset:2px}
+.dest-hint a:hover{color:var(--mint)}
+
+/* two-way travel */
+.two-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+.way{
+  border-radius:26px;padding:40px 36px;position:relative;overflow:hidden;
+  background:var(--card);border:1.5px solid var(--line);box-shadow:var(--shadow);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;
+}
+.way:hover{transform:translateY(-8px);box-shadow:var(--shadow-big)}
+.way .route{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.16em;color:var(--mint-strong);font-weight:600;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.way .route .plane{display:inline-block;animation:fly 3.4s ease-in-out infinite}
+@keyframes fly{0%,100%{transform:translateX(0) translateY(0)}50%{transform:translateX(9px) translateY(-5px)}}
+.way h3{font-size:23px;margin:16px 0 12px}
+.way p{color:var(--muted);font-weight:600;font-size:15.5px}
+.way ul{list-style:none;margin-top:20px;display:grid;gap:10px}
+.way li{display:flex;gap:11px;font-weight:700;font-size:14.5px;align-items:flex-start}
+.way li .ck{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:var(--mint-soft);color:var(--mint-strong);margin-top:2px}
+.way.gold li .ck{background:var(--gold-soft);color:var(--gold)}
+.way .big-flag{position:absolute;right:-14px;bottom:-26px;font-size:120px;opacity:.10;transform:rotate(-8deg)}
+
+/* compare: physical vs esim */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+.cmp-col{border-radius:26px;padding:38px 34px;border:1.5px solid var(--line);background:var(--card);box-shadow:var(--shadow);position:relative}
+.cmp-col.win{border-color:var(--mint);background:linear-gradient(170deg,var(--mint-soft),var(--card) 50%)}
+.cmp-col .tag{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+  padding:7px 14px;border-radius:999px;display:inline-block;margin-bottom:20px;
+}
+.cmp-col.lose .tag{background:var(--rose-soft);color:var(--rose)}
+.cmp-col.win .tag{background:var(--mint-soft);color:var(--mint-strong)}
+.cmp-col h3{font-size:20px;margin-bottom:20px}
+.cmp-col ul{list-style:none;display:grid;gap:13px}
+.cmp-col li{display:flex;gap:12px;font-weight:700;font-size:15px;align-items:flex-start;color:var(--muted)}
+.cmp-col.win li{color:var(--ink)}
+.cmp-col li .x{flex:0 0 23px;height:23px;border-radius:50%;display:grid;place-items:center;font-size:11px;margin-top:2px}
+.cmp-col.lose .x{background:var(--rose-soft);color:var(--rose)}
+.cmp-col.win .x{background:var(--mint-soft);color:var(--mint-strong)}
+.cmp-col .stamp{
+  position:absolute;top:26px;right:26px;font-family:'Unbounded',sans-serif;font-weight:800;font-size:12px;
+  transform:rotate(8deg);padding:8px 14px;border-radius:10px;letter-spacing:.06em;
+}
+.cmp-col.lose .stamp{border:2px solid var(--rose);color:var(--rose);opacity:.85}
+.cmp-col.win .stamp{border:2px solid var(--mint-strong);color:var(--mint-strong)}
+
+/* delivery chat */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:66px;align-items:center}
+.split h2{font-size:clamp(29px,3.6vw,44px);margin-bottom:18px}
+.split p.lead{color:var(--muted);font-size:17.5px;font-weight:600}
+.chan-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.chan{
+  border:1.5px solid var(--line);border-radius:16px;padding:18px;display:flex;gap:13px;align-items:center;
+  background:var(--card);transition:transform .3s,border-color .3s,box-shadow .3s;font-weight:800;font-size:15px;box-shadow:var(--shadow);
+}
+.chan:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:var(--shadow-big)}
+.chan .ci{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:19px;flex:0 0 42px}
+.chan.wa .ci{background:#25D366}
+.chan.ig .ci{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.chat-stage{
+  background:var(--card);border:1.5px solid var(--line);border-radius:28px;box-shadow:var(--shadow-big);
+  padding:34px;min-height:430px;display:flex;flex-direction:column;gap:15px;position:relative;overflow:hidden;
+}
+.chat-stage::after{
+  content:"connectkro · instant delivery";position:absolute;top:0;left:0;right:0;padding:13px 22px;
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--line);background:var(--paper-2);font-weight:600;
+}
+.bubble{
+  max-width:79%;padding:13px 17px;border-radius:18px;font-size:14.5px;font-weight:600;margin-top:6px;
+  opacity:0;transform:translateY(16px) scale(.96);
+  transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);
+}
+.bubble.show{opacity:1;transform:none}
+.bubble.in{align-self:flex-start;background:var(--paper-2);border:1px solid var(--line);border-bottom-left-radius:6px;margin-top:44px}
+.bubble.out{align-self:flex-end;background:var(--mint-soft);border:1.5px solid var(--mint);border-bottom-right-radius:6px}
+.bubble .qr{
+  width:116px;height:116px;border-radius:12px;margin-top:10px;position:relative;overflow:hidden;
+  background:conic-gradient(from 0deg,var(--ink) 25%,transparent 0 50%,var(--ink) 0 75%,transparent 0) 0 0/23px 23px,var(--paper);
+  border:1px solid var(--line);
+}
+.bubble .qr::before{content:"";position:absolute;inset:37px;background:var(--paper);border:5px solid var(--ink);border-radius:5px}
+.bubble .qr::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--mint);box-shadow:0 0 14px var(--mint);animation:scan 2.2s ease-in-out infinite}
+@keyframes scan{0%,100%{top:4%}50%{top:92%}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:62px;position:relative}
+.steps::before{content:"";position:absolute;top:44px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--mint),var(--gold),var(--rose));opacity:.4}
+.step{
+  background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:58px 28px 32px;text-align:center;
+  position:relative;box-shadow:var(--shadow);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .4s;
+}
+.step:hover{transform:translateY(-10px);box-shadow:var(--shadow-big)}
+.step:nth-child(1):hover{border-color:var(--mint)}
+.step:nth-child(2):hover{border-color:var(--gold)}
+.step:nth-child(3):hover{border-color:var(--rose)}
+.step .orb{
+  position:absolute;top:-26px;left:50%;transform:translateX(-50%);width:62px;height:62px;border-radius:50%;
+  display:grid;place-items:center;font-size:25px;background:var(--paper);border:2.5px solid var(--mint);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.step:nth-child(2) .orb{border-color:var(--gold)}
+.step:nth-child(3) .orb{border-color:var(--rose)}
+.step:hover .orb{transform:translateX(-50%) scale(1.15) rotate(8deg)}
+.step h3{font-size:16.5px;font-weight:600;margin-bottom:11px}
+.step p{font-size:14.5px;color:var(--muted);font-weight:600}
+.step .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--muted);display:block;margin-bottom:10px;font-weight:600}
+
+/* testimonials */
+.quote-band{overflow:hidden;padding:70px 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote-track{display:flex;gap:22px;width:max-content;animation:tick 46s linear infinite}
+.quote-band:hover .quote-track{animation-play-state:paused}
+.qcard{
+  width:330px;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);
+  font-size:14.5px;font-weight:600;color:var(--ink-soft);
+}
+.qcard .stars{color:var(--gold);letter-spacing:3px;margin-bottom:12px;font-size:14px}
+.qcard .who{margin-top:16px;display:flex;align-items:center;gap:11px}
+.qcard .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--mint),var(--mint-strong))}
+.qcard .who b{font-size:13.5px;display:block}
+.qcard .who span{font-size:12px;color:var(--muted)}
+
+/* final */
+.final{text-align:center;padding:130px 0 96px;overflow:hidden;position:relative}
+.final h2{font-size:clamp(33px,4.6vw,56px);max-width:840px;margin:0 auto 20px}
+.final h2 .urdu{color:var(--gold);display:inline-block;font-size:.9em;transform:translateY(6px)}
+.final p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto 36px;font-weight:600}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(--muted);font-weight:600}
+.foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+
+
+.chan-num{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);font-weight:500}
+.claim-banner{
+  background:linear-gradient(115deg,rgba(168,144,31,.16),rgba(48,109,40,.12));
+  border:1.5px solid rgba(168,144,31,.5);border-radius:16px;padding:14px 22px;
+  font-weight:800;color:var(--ink);max-width:720px;margin:18px auto 0!important;font-size:15.5px;
+}
+.foot-contact{display:flex;gap:18px;flex-wrap:wrap}
+.foot-contact a{transition:color .25s}
+.fico{display:inline-flex;align-items:center;gap:7px}
+.fico svg{flex:0 0 auto}
+.foot-contact a:hover{color:var(--mint-strong)}
+
+.price-pkr{font-size:14.5px;color:var(--ink-soft);font-weight:600;margin-top:-2px}
+.more-dest{display:inline-flex}
+.more-select{
+  appearance:none;-webkit-appearance:none;
+  padding:12px 40px 12px 20px;border-radius:999px;border:1.5px solid var(--line);
+  background:rgba(var(--card-rgb),.85) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235E6B4A' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 16px center;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:var(--ink);cursor:pointer;
+  transition:all .3s;max-width:260px;
+}
+.more-select:hover{border-color:var(--mint);transform:translateY(-2px)}
+.more-select.active{background-color:var(--dacc);color:#fff;border-color:transparent;box-shadow:0 10px 28px rgba(var(--dacc-rgb),.35)}
+.dest-note a{color:var(--mint-strong);text-decoration:underline}
+
+.compat-search{max-width:640px;margin:0 auto 40px;position:relative}
+#compatInput{
+  width:100%;padding:18px 24px;border-radius:999px;border:1.5px solid var(--line);
+  background:rgba(var(--card-rgb),.85);font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:var(--ink);
+  box-shadow:var(--shadow);outline:none;transition:border-color .3s,box-shadow .3s;
+}
+#compatInput:focus{border-color:var(--mint);box-shadow:0 14px 40px rgba(48,109,40,.2)}
+.compat-result{margin-top:14px;text-align:center;font-weight:800;font-size:15px;min-height:24px;transition:all .3s}
+.compat-result.yes{color:var(--mint-strong)}
+.compat-result.no{color:var(--rose)}
+.compat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.compat-col{
+  background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:26px 24px;box-shadow:var(--shadow);
+}
+.compat-col h3{font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.compat-col h3 .brand-ico{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:0 0 36px;background:var(--mint-soft)}
+.compat-col.apple .brand-ico{background:rgba(17,17,17,.07)}
+[data-theme="dark"] .compat-col.apple .brand-ico{background:rgba(255,255,255,.1)}
+.compat-col.samsung .brand-ico{background:rgba(20,40,160,.08)}
+.compat-col.google-pixel .brand-ico{background:rgba(66,133,244,.09)}
+.brand-ico__initial{font-family:'Unbounded',sans-serif;font-weight:800;font-size:14px;color:var(--mint-strong)}
+.compat-col ul{list-style:none;display:grid;gap:6px;max-height:340px;overflow-y:auto;padding-right:6px}
+.compat-col li{
+  font-size:13.5px;font-weight:600;color:var(--ink-soft);padding:6px 12px;border-radius:9px;
+  display:flex;align-items:center;gap:9px;transition:background .2s;
+}
+.compat-col li::before{content:"\2713";color:var(--mint-strong);font-weight:800;font-size:12px}
+.compat-col li.hl{background:var(--mint-soft);color:var(--mint-strong)}
+.compat-col li.dim{opacity:.22}
+.compat-col ul::-webkit-scrollbar{width:5px}
+.compat-col ul::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+
+/* --- mobile nav & circle buttons --- */
+.menu-btn{
+  display:none;width:44px;height:44px;min-width:44px;min-height:44px;aspect-ratio:1/1;
+  border-radius:50%;border:1.5px solid var(--line);background:var(--card);
+  flex:0 0 44px;padding:0;flex-direction:column;align-items:center;justify-content:center;gap:4.5px;
+  transition:border-color .3s,transform .3s;
+}
+.menu-btn span{display:block;width:17px;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s,opacity .3s}
+.menu-btn:hover{border-color:var(--mint)}
+.menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-panel{
+  position:fixed;top:70px;left:14px;right:14px;z-index:99;
+  background:rgba(var(--card-rgb),.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1.5px solid var(--line);border-radius:20px;box-shadow:var(--shadow-big);
+  display:flex;flex-direction:column;padding:10px;
+  opacity:0;pointer-events:none;transform:translateY(-12px);transition:opacity .3s,transform .3s;
+}
+.mobile-panel.open{opacity:1;pointer-events:auto;transform:none}
+.mobile-panel a{padding:14px 18px;border-radius:12px;font-weight:800;font-size:16px;color:var(--ink)}
+.mobile-panel a:active,.mobile-panel a:hover{background:var(--mint-soft);color:var(--mint-strong)}
+/* --- global horizontal overflow safety --- */
+html,body{max-width:100%;overflow-x:hidden}
+section,header,footer,nav{max-width:100vw}
+img,svg,canvas{max-width:100%}
+@media(max-width:980px){
+  .pkg-grid{grid-template-columns:repeat(2,1fr)}
+  .compat-grid{grid-template-columns:1fr}
+  .two-grid,.cmp{grid-template-columns:1fr}
+}
+@media(max-width:880px){
+  .menu-btn{display:flex}
+  .nav-in{padding:12px 16px}
+  .nav-cta{padding:11px 16px;font-size:13.5px}
+  .logo{font-size:16px}
+  .hero-grid,.split{grid-template-columns:1fr;gap:48px}
+  .hero{padding-top:120px}
+  .hero-vis{height:430px}
+  .steps{grid-template-columns:1fr;gap:48px}
+  .steps::before{display:none}
+  .nav-links{display:none}
+  .urdu-stamp{display:none}
+  section{padding:78px 0}
+  .split .vis-first{order:-1}
+}
+@media(max-width:560px){
+  .pkg-grid{grid-template-columns:1fr}
+  .dest-tabs{gap:8px}
+  .dtab{padding:10px 15px;font-size:13.5px}
+  .more-select{max-width:100%;font-size:13.5px;padding:10px 36px 10px 15px}
+  .dest-meta{padding:16px 18px}
+  .dest-meta .from{font-size:13px}
+  .chan-num{display:none}
+  .hero h1{font-size:34px}
+  .esim-card{width:262px;height:164px}
+  .orbit.o1{width:320px;height:320px}
+  .orbit.o2{width:400px;height:400px}
+  .hero-vis{height:380px}
+  .quote-band .qcard{width:280px}
+  .final h2 .urdu{font-size:.85em}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.15s!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ===== v3: country theming & scenes ===== */
+#destinations{--dacc:var(--mint-strong);--dacc-rgb:48,109,40;overflow:hidden;transition:background .8s}
+#destinations .country-tint{
+  position:absolute;inset:0;pointer-events:none;z-index:0;transition:background 1s;
+  background:radial-gradient(ellipse 90% 60% at 50% 110%, rgba(var(--dacc-rgb),.10), transparent 65%);
+}
+
+
+#destinations .wrap{position:relative;z-index:1}
+.dtab.active{background:linear-gradient(120deg,var(--dacc),var(--dacc));color:#fff;border-color:transparent;box-shadow:0 10px 28px rgba(var(--dacc-rgb),.38)}
+.dest-meta{border-top:4px solid var(--dacc);transition:border-color .7s}
+.dest-meta .from{color:var(--dacc);transition:color .7s}
+.pkg .price{color:var(--dacc);transition:color .7s}
+.pkg:hover{border-color:var(--dacc)}
+.pkg .btn-dest{background:var(--dacc);color:#fff;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .7s}
+.pkg .btn-dest:hover{box-shadow:0 12px 30px rgba(var(--dacc-rgb),.4)}
+.pkg .ribbon{background:var(--dacc);color:#fff;transition:background .7s}
+.pkg-cat{
+  grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:14px 0 2px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;
+  opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;
+}
+.pkg-cat.show{opacity:1;transform:none}
+.pkg-cat::after{content:"";flex:1;height:1px;background:var(--line)}
+.pkg-cat b{color:var(--dacc);font-weight:600;transition:color .7s;background:rgba(var(--card-rgb),.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:6px 15px;border-radius:999px;border:1px solid var(--line)}
+.grp-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;justify-content:center}
+.gpill{
+  padding:11px 22px;border-radius:999px;border:1.5px solid var(--line);background:rgba(var(--card-rgb),.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-weight:800;font-size:14px;color:var(--ink);transition:all .3s cubic-bezier(.34,1.56,.64,1);
+}
+.gpill:hover{transform:translateY(-2px);border-color:var(--dacc)}
+.gpill.active{background:var(--dacc);color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(var(--dacc-rgb),.35)}
+.cov-flags{
+  display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;font-size:13px;font-weight:700;color:var(--muted);
+}
+.cov-flags span{background:rgba(var(--card-rgb),.75);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.pkg .gb .unl{font-size:24px;letter-spacing:-.01em}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="bg-dots"></div>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo">connect<b>kro</b>.pk <span class="urdu">کرو</span></a>
+    <div class="nav-links">
+      <a href="#destinations">Destinations</a>
+      <a href="#why">Why eSIM</a>
+      <a href="#how">How it works</a>
+      <a href="#compat">Compatibility</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false"><span id="themeIcon" aria-hidden="true">☀️</span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="https://wa.me/923001221286?text=Salaam!%20I%20want%20to%20get%20a%20connectkro%20eSIM" target="_blank" rel="noopener" class="btn btn-mint nav-cta">Get my eSIM <span class="arr">→</span></a>
+    </div>
+  </div>
+</nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#destinations">🌍 Destinations & rates</a>
+  <a href="#why">✨ Why eSIM</a>
+  <a href="#how">⚡ How it works</a>
+  <a href="#compat">📱 Check my phone</a>
+  <a href="#reviews">⭐ Reviews</a>
+  <a href="https://wa.me/923001221286" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px"><svg viewBox="0 0 24 24" width="18" height="18" fill="#25D366" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> WhatsApp us</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="urdu-stamp">کنیکٹ کرو</div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow rv">GLOBAL TRAVEL DATA · 195+ DESTINATIONS</div>
+      <h1 class="rv d1">Land anywhere. <span class="hl">Already connected.</span></h1>
+      <p class="sub rv d2">Instant data eSIMs for wherever you're headed — Pakistan, Türkiye, Malaysia, Saudi Arabia and beyond. Try one from just $1, installed before boarding, online the moment you land.</p>
+      <div class="dest-chips rv d3">
+        <a href="#destinations" class="dchip" data-dest="pk">🇵🇰 Pakistan <span class="fr">from $1.00</span></a>
+        <a href="#destinations" class="dchip" data-dest="tr">🇹🇷 Türkiye <span class="fr">from $1.05</span></a>
+        <a href="#destinations" class="dchip" data-dest="my">🇲🇾 Malaysia <span class="fr">from $1.30</span></a>
+        <a href="#destinations" class="dchip" data-dest="sa">🇸🇦 Saudi Arabia <span class="fr">from $1.50</span></a>
+      </div>
+      <div class="hero-ctas rv d3">
+        <a href="#destinations" class="btn btn-mint" style="font-size:16px;padding:16px 30px">See all destinations & rates <span class="arr">→</span></a>
+      </div>
+      <div class="hero-trust rv d4">
+        <div class="stat"><div class="n">$<b id="cTrial">0</b></div><div class="l">Trial eSIMs from</div></div>
+        <div class="stat"><div class="n"><b id="cMinutes">0</b> min</div><div class="l">To get online</div></div>
+        <div class="stat"><div class="n"><b>0</b> PKR</div><div class="l">Roaming surprises</div></div>
+      </div>
+    </div>
+    <div class="hero-vis rv d2">
+      <canvas id="arcCanvas"></canvas>
+      <div class="orbit o1"><span class="sat"></span></div>
+      <div class="orbit o2"><span class="sat"></span></div>
+      <div class="esim-card" id="esimCard">
+        <div class="sig"><i></i><i></i><i></i><i></i></div>
+        <div class="chip"></div>
+        <div class="cname">connect<b>kro</b> · global data</div>
+        <div class="cid">eSIM · 8923 01•• •••• 4471</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- ================= DESTINATIONS ================= -->
+<section id="destinations">
+  <div class="country-tint"></div>
+  <div class="wrap">
+    <div class="dest-head">
+      <div class="eyebrow rv" style="justify-content:center">Pick a destination · Watch the page travel with you</div>
+      <h2 class="rv d1">Where are you flying?</h2>
+      <p class="rv d2">Every destination has honest, transparent rates — from $1 trial eSIMs to 180-day long-stay plans. Tap a country and the whole page follows you there.</p>
+    </div>
+    <div class="dest-tabs rv d2" id="destTabs" role="tablist"></div>
+    <p class="dest-hint rv d2">Don't see your country? <a href="https://wa.me/923001221286?text=Salaam!%20Do%20you%20cover%20my%20country%3F" target="_blank" rel="noopener"><b>Message us on WhatsApp</b></a> — we cover 195+ destinations.</p>
+    <div class="dest-panel rv d3">
+      <div class="dest-meta">
+        <div class="place">
+          <span class="flag" id="dFlag">🇵🇰</span>
+          <div>
+            <h3 id="dName">Pakistan</h3>
+            <div class="cov" id="dCov"></div>
+            <div class="cov-flags" id="dCovFlags" style="display:none"></div>
+          </div>
+        </div>
+        <div class="from mono" id="dFrom"></div>
+      </div>
+      <div class="grp-pills" id="grpPills" style="display:none"></div>
+      <div class="pkg-grid" id="pkgGrid"></div>
+      <p class="dest-note" id="dNote">All plans are data-only, hotspot-sharing enabled, and delivered instantly. Need a destination you don't see? Message us — we cover 195+ destinations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TWO-WAY TRAVEL ================= -->
+<section id="twoway" style="padding-top:0">
+  <div class="wrap">
+    <div class="dest-head">
+      <div class="eyebrow gold rv" style="justify-content:center">Both directions covered</div>
+      <h2 class="rv d1" style="font-size:clamp(28px,3.6vw,44px)">Leaving Pakistan? Coming home? Sorted.</h2>
+    </div>
+    <div class="two-grid">
+      <div class="way rv d1">
+        <span class="big-flag">🌍</span>
+        <div class="route"><span class="plane">✈</span> Pakistan → World</div>
+        <h3>Travelling abroad from Pakistan</h3>
+        <p>Umrah, business trip, holiday or studies — install your destination eSIM before you fly and skip every airport SIM counter on arrival.</p>
+        <ul>
+          <li><span class="ck">✓</span>Keep your Pakistani SIM active for bank OTPs &amp; calls</li>
+          <li><span class="ck">✓</span>Use connectkro for all data — WhatsApp, Maps, Instagram</li>
+          <li><span class="ck">✓</span>Connect the second the plane doors open</li>
+        </ul>
+      </div>
+      <div class="way gold rv d2">
+        <span class="big-flag">🇵🇰</span>
+        <div class="route" style="color:var(--gold)"><span class="plane">✈</span> World → Pakistan</div>
+        <h3>Visiting or returning to Pakistan</h3>
+        <p>Overseas Pakistanis and visitors: land in Karachi, Lahore or Islamabad with data already working — no queues, no paperwork, no waiting.</p>
+        <ul>
+          <li><span class="ck">✓</span>Buy from anywhere in the world before your flight</li>
+          <li><span class="ck">✓</span>Try Pakistan data from just $1 — or 100 GB for 6 months</li>
+          <li><span class="ck">✓</span>Call the family on WhatsApp from the arrivals hall</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ESIM ================= -->
+<section id="why" style="padding-top:0">
+  <div class="wrap">
+    <div class="dest-head">
+      <div class="eyebrow rose rv" style="justify-content:center">The old way vs the connectkro way</div>
+      <h2 class="rv d1" style="font-size:clamp(28px,3.6vw,44px)">Why ditch physical SIM and go for eSIM</h2>
+      <p class="rv d2 claim-banner">💸 We are 400 to 700 PKR cheaper than competitors on standard packages, and up to 1,000 PKR cheaper on big packages like 20 GB!</p>
+    </div>
+    <div class="cmp">
+      <div class="cmp-col lose rv d1">
+        <span class="stamp">SKIP THIS</span>
+        <span class="tag">Physical SIM abroad</span>
+        <h3>The airport SIM hustle 😩</h3>
+        <ul>
+          <li><span class="x">✕</span>Queue at a kiosk after a 6-hour flight</li>
+          <li><span class="x">✕</span>Passport copies, forms &amp; registration</li>
+          <li><span class="x">✕</span>Tourist pricing — pay double at the airport</li>
+          <li><span class="x">✕</span>Swap out your own SIM &amp; risk losing it</li>
+          <li><span class="x">✕</span>Miss bank OTPs while your number is out</li>
+        </ul>
+      </div>
+      <div class="cmp-col win rv d2">
+        <span class="stamp">DO THIS</span>
+        <span class="tag">connectkro eSIM</span>
+        <h3>Tap. Install. Land connected. ✨</h3>
+        <ul>
+          <li><span class="x">✓</span>Buy online in 60 seconds — before you fly</li>
+          <li><span class="x">✓</span>Nothing physical: no card, no swap, no loss</li>
+          <li><span class="x">✓</span>Try it for $1 — no tourist markup, ever</li>
+          <li><span class="x">✓</span>Your own SIM stays in for OTPs &amp; calls</li>
+          <li><span class="x">✓</span>Hotspot-share your data with the whole family</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DELIVERY ================= -->
+<section id="delivery" style="padding-top:0">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow rv">Delivered in minutes · No app required</div>
+      <h2 class="rv d1">Your eSIM, straight to your DMs.</h2>
+      <p class="lead rv d2">Checkout, and your eSIM profile arrives instantly on WhatsApp, Instagram DM or Email. Scan the QR, or tap one direct link that opens your phone's own settings and installs automatically. Zero extra apps.</p>
+      <div class="chan-grid rv d3">
+        <a class="chan wa" href="https://wa.me/923001221286" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>WhatsApp <span class="chan-num">+92 300 1221286</span></a>
+        <a class="chan ig" href="https://www.instagram.com/connectkro.pk?igsh=aHp3YmZqajd0MnFh" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span>Instagram <span class="chan-num">@connectkro.pk</span></a>
+      </div>
+    </div>
+    <div class="chat-stage rv d2" id="chatStage">
+      <div class="bubble in">Hey! 👋 Your <b>UK · 10 GB monthly</b> eSIM is ready ✨</div>
+      <div class="bubble in">Scan this QR — or just tap the link below.<div class="qr" role="img" aria-label="Illustrative eSIM QR code"></div></div>
+      <div class="bubble in">🔗 <b>Tap to install</b> → opens your phone's SIM settings and installs automatically. No app needed.</div>
+      <div class="bubble out">Installed before boarding. See you in London 🇬🇧🔥</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW ================= -->
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="dest-head">
+      <div class="eyebrow rv" style="justify-content:center">Three steps · About 3 minutes</div>
+      <h2 class="rv d1" style="font-size:clamp(28px,3.6vw,44px)">From checkout to connected.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv d1">
+        <div class="orb">🛒</div>
+        <span class="k">01 · CHOOSE</span>
+        <h3>Pick your destination</h3>
+        <p>Choose a country and a plan that fits your trip — a $1 trial, a weekly, a monthly, or a 180-day long stay.</p>
+      </div>
+      <div class="step rv d2">
+        <div class="orb">📲</div>
+        <span class="k">02 · INSTALL</span>
+        <h3>Scan QR or tap the link</h3>
+        <p>Your eSIM lands in WhatsApp, Email or DM instantly. One scan or one tap and it installs itself.</p>
+      </div>
+      <div class="step rv d3">
+        <div class="orb">🌍</div>
+        <span class="k">03 · CONNECT</span>
+        <h3>Land &amp; go online</h3>
+        <p>Switch on data roaming for your connectkro line when you arrive — and share via hotspot with everyone travelling with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= COMPATIBILITY ================= -->
+<section id="compat" style="padding-top:0">
+  <div class="wrap">
+    <div class="dest-head">
+      <div class="eyebrow rv" style="justify-content:center">Before you buy</div>
+      <h2 class="rv d1" style="font-size:clamp(28px,3.6vw,44px)">Does my phone support eSIM?</h2>
+      <p class="rv d2">Type your phone model below, or browse the list. If your phone is here, you're ready for connectkro.</p>
+    </div>
+    <div class="compat-search rv d2">
+      <input type="search" id="compatInput" placeholder="🔍 Search your phone… e.g. iPhone 13, Galaxy S23, Pixel 7" aria-label="Search compatible phones">
+      <div class="compat-result" id="compatResult"></div>
+    </div>
+    <div class="compat-grid rv d3" id="compatGrid"></div>
+    <p class="dest-note rv d3" style="margin-top:26px">Phone not on the list? Newer models usually support eSIM too. Message us on <a href="https://wa.me/923001221286" target="_blank" rel="noopener"><b>WhatsApp</b></a> or <a href="https://www.instagram.com/connectkro.pk?igsh=aHp3YmZqajd0MnFh" target="_blank" rel="noopener"><b>Instagram</b></a> and we'll confirm in minutes. Tip: dial <b>*#06#</b> — if you see an EID number, your phone supports eSIM.</p>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<div class="quote-band" id="reviews"><div class="quote-track" id="quoteTrack"></div></div>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow gold rv" style="justify-content:center">Your next trip starts connected</div>
+    <h2 class="rv d1">Don't board without it.<span class="urdu" style="display:block;margin-top:18px">کنیکٹ کرو</span></h2>
+    <p class="rv d2">Trial eSIMs from just $1 · Delivered in minutes · Working the moment you land. Try one on your next trip — you'll never queue for a SIM again.</p>
+    <div class="rv d3" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#destinations" class="btn btn-mint" style="font-size:17px;padding:18px 36px">Choose my destination <span class="arr">→</span></a>
+      <a href="#how" class="btn btn-ghost" style="font-size:16px;padding:18px 30px">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="logo" style="font-size:16px">connect<b>kro</b>.pk <span class="urdu" style="font-size:13px">کرو</span></span>
+    <span>Connecting people globally, keeping you linked with your loved ones wherever they are.</span>
+    <span class="foot-contact">
+      <a href="https://wa.me/923001221286" target="_blank" rel="noopener" class="fico"><svg viewBox="0 0 24 24" width="15" height="15" fill="#25D366" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> +92 300 1221286</a>
+      <a href="https://www.instagram.com/connectkro.pk?igsh=aHp3YmZqajd0MnFh" target="_blank" rel="noopener" class="fico"><svg viewBox="0 0 24 24" width="15" height="15" fill="#C13584" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg> @connectkro.pk</a>
+      <a href="mailto:support@connectkro.pk" class="fico">✉ support@connectkro.pk</a>
+    </span>
+    <span>© 2026 connectkro.pk</span>
+  </div>
+</footer>
+
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const root = document.documentElement;
+
+/* ---------- dark mode ---------- */
+(function(){
+  const STORAGE_KEY = 'ck-theme';
+  const stored = localStorage.getItem(STORAGE_KEY);
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let theme = stored === 'light' || stored === 'dark' ? stored : (prefersDark ? 'dark' : 'light');
+
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function applyTheme(t){
+    theme = t;
+    root.setAttribute('data-theme', t);
+    localStorage.setItem(STORAGE_KEY, t);
+    if (themeIcon) themeIcon.textContent = t === 'dark' ? '🌙' : '☀️';
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+  }
+  applyTheme(theme);
+  themeToggle?.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
+})();
+
+/* ============================================================
+   DESTINATIONS, EXACT RATES & COUNTRY THEMES — edit here
+   a = amount, d = validity, pr = USD price
+   ============================================================ */
+const RATE = 280; // 1 USD = 280 PKR (fixed)
+const WA_NUM = '923001221286';
+const IG_URL = 'https://www.instagram.com/connectkro.pk?igsh=aHp3YmZqajd0MnFh';
+const pkr = usd => '\u20A8' + Math.round(usd*RATE).toLocaleString('en-PK');
+const waMsg = txt => 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(txt);
+
+/* APAC shared rate card (same for every APAC country) */
+const apacCats = () => ([
+  {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.50,trial:true},{a:'1 GB',d:'1 day',pr:6.87,trial:true}]},
+  {t:'Weekly', p:[{a:'1 GB',d:'7 days',pr:7.41}]},
+  {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:15.50}]},
+  {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:16.50},{a:'5 GB',d:'30 days',pr:28.50},{a:'10 GB',d:'30 days',pr:45.50,best:true},{a:'20 GB',d:'30 days',pr:75.00}]},
+  {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:185.00},{a:'100 GB',d:'180 days',pr:350.00}]},
+]);
+const cnUnlimited = () => ({label:'🇨🇳 China Unlimited', cats:[
+  {t:'Unlimited data passes', p:[
+    {a:'Unlimited',d:'1 day',pr:4.99},{a:'Unlimited',d:'3 days',pr:11.99},
+    {a:'Unlimited',d:'5 days',pr:16.99},{a:'Unlimited',d:'7 days',pr:21.99,best:true}]},
+]});
+const TAIL_ACC = [{l:'#306D28', lr:'48,109,40'}];
+
+const DEST = {
+  /* ---------- TOP 6 ---------- */
+  pk: {
+    flag:'🇵🇰', name:'Pakistan', cov:'Nationwide 4G/5G coverage · Local & visitor plans',
+    acc:{l:'#306D28', lr:'48,109,40'},
+    groups:[{label:null, cats:[
+      {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.00,trial:true},{a:'1 GB',d:'1 day',pr:1.51,trial:true}]},
+      {t:'Weekly', p:[{a:'1 GB',d:'7 days',pr:1.72}]},
+      {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:4.50}]},
+      {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:5.04},{a:'5 GB',d:'30 days',pr:6.83},{a:'10 GB',d:'30 days',pr:9.00,best:true},{a:'20 GB',d:'30 days',pr:15.47}]},
+      {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:30.58},{a:'100 GB',d:'180 days',pr:55.76}]},
+    ]}]
+  },
+  tr: {
+    flag:'🇹🇷', name:'Türkiye', cov:'4G/5G coverage · Instant activation',
+    acc:{l:'#306D28', lr:'48,109,40'},
+    groups:[{label:null, cats:[
+      {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.05,trial:true},{a:'1 GB',d:'1 day',pr:1.55,trial:true}]},
+      {t:'Weekly', p:[{a:'1 GB',d:'7 days',pr:1.72}]},
+      {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:3.05}]},
+      {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:5.30},{a:'5 GB',d:'30 days',pr:7.20},{a:'10 GB',d:'30 days',pr:11.50},{a:'20 GB',d:'30 days',pr:15.50,best:true}]},
+      {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:40.00},{a:'100 GB',d:'180 days',pr:65.00}]},
+    ]}]
+  },
+  my: {
+    flag:'🇲🇾', name:'Malaysia', cov:'4G/5G coverage · Instant activation',
+    acc:{l:'#306D28', lr:'48,109,40'},
+    groups:[{label:null, cats:[
+      {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.30,trial:true},{a:'1 GB',d:'1 day',pr:2.00,trial:true}]},
+      {t:'Weekly', p:[{a:'1 GB',d:'7 days',pr:2.49}]},
+      {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:5.44}]},
+      {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:5.75},{a:'5 GB',d:'30 days',pr:6.99},{a:'10 GB',d:'30 days',pr:12.99},{a:'20 GB',d:'30 days',pr:17.99,best:true}]},
+      {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:44.99},{a:'100 GB',d:'180 days',pr:74.99}]},
+    ]}]
+  },
+  sa: {
+    flag:'🇸🇦', name:'Saudi Arabia', cov:'Umrah & Hajj ready · 4G/5G coverage',
+    acc:{l:'#306D28', lr:'48,109,40'},
+    groups:[{label:null, cats:[
+      {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.50,trial:true},{a:'1 GB',d:'1 day',pr:3.20,trial:true}]},
+      {t:'Weekly', p:[{a:'1 GB',d:'7 days',pr:3.50}]},
+      {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:7.00}]},
+      {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:8.59,best:true},{a:'5 GB',d:'30 days',pr:13.79},{a:'10 GB',d:'30 days',pr:22.49},{a:'20 GB',d:'30 days',pr:41.59}]},
+      {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:99.99},{a:'100 GB',d:'180 days',pr:180.00}]},
+    ]}]
+  },
+  ae: {
+    flag:'🇦🇪', name:'UAE', cov:'Dubai & Abu Dhabi · 5G coverage',
+    acc:{l:'#306D28', lr:'48,109,40'},
+    groups:[{label:null, cats:[
+      {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.50,trial:true},{a:'1 GB',d:'1 day',pr:3.20,trial:true}]},
+      {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:7.00}]},
+      {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:7.50,best:true},{a:'5 GB',d:'30 days',pr:13.99},{a:'10 GB',d:'30 days',pr:22.49},{a:'20 GB',d:'30 days',pr:38.00}]},
+      {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:99.99},{a:'100 GB',d:'180 days',pr:180.00}]},
+    ]}]
+  },
+  gb: {
+    flag:'🇬🇧', name:'United Kingdom', cov:'UK-wide 5G · Travel & Unlimited plans',
+    acc:{l:'#306D28', lr:'48,109,40'},
+    groups:[
+      {label:'✈️ Travel plans', cats:[
+        {t:'Trial & 1-Day', p:[{a:'100 MB',d:'1 day',pr:1.00,trial:true},{a:'1 GB',d:'1 day',pr:1.60,trial:true}]},
+        {t:'Weekly', p:[{a:'1 GB',d:'7 days',pr:1.80}]},
+        {t:'15 Days', p:[{a:'3 GB',d:'15 days',pr:4.00}]},
+        {t:'Monthly', p:[{a:'3 GB',d:'30 days',pr:4.50},{a:'5 GB',d:'30 days',pr:7.00},{a:'10 GB',d:'30 days',pr:10.00,best:true},{a:'20 GB',d:'30 days',pr:18.00}]},
+        {t:'Long stay', p:[{a:'50 GB',d:'90 days',pr:35.00},{a:'100 GB',d:'180 days',pr:60.00}]},
+      ]},
+      {label:'♾️ Unlimited plans', cats:[
+        {t:'Unlimited data passes', p:[
+          {a:'Unlimited',d:'1 day',pr:4.99},{a:'Unlimited',d:'3 days',pr:9.99},
+          {a:'Unlimited',d:'5 days',pr:14.99},{a:'Unlimited',d:'7 days',pr:17.99,best:true}]},
+      ]},
+    ]
+  },
+  /* ---------- APAC INDIVIDUAL COUNTRIES (shared rate card) ---------- */
+  th:     { flag:'🇹🇭', name:'Thailand',            cov:'Connects to networks inside Thailand only', groups:[{label:null, cats:apacCats()}] },
+  thapac: { flag:'🌏', name:'Thailand APAC',        cov:'',
+    covFlags:['🇹🇭 Thailand','🇸🇬 Singapore','🇲🇾 Malaysia','🇮🇩 Indonesia · Bali','🇵🇭 Philippines','🇻🇳 Vietnam','🇯🇵 Japan','🇰🇷 South Korea','🇹🇼 Taiwan','🇭🇰 Hong Kong','🇲🇴 Macau','🇨🇳 China','🇦🇺 Australia','🇳🇿 New Zealand'],
+    note:'One eSIM, one data profile, working across all the countries above. Perfect for multi-stop trips. China Unlimited day passes are also available. A one-time \u20A81,500 membership fee applies on monthly packages.',
+    groups:[{label:'🌏 APAC regional plan', cats:apacCats()}, cnUnlimited()] },
+  sg: { flag:'🇸🇬', name:'Singapore',      cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  id: { flag:'🇮🇩', name:'Indonesia',      cov:'Including Bali · 4G/5G coverage',     groups:[{label:null, cats:apacCats()}] },
+  ph: { flag:'🇵🇭', name:'Philippines',    cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  vn: { flag:'🇻🇳', name:'Vietnam',        cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  jp: { flag:'🇯🇵', name:'Japan',          cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  kr: { flag:'🇰🇷', name:'South Korea',    cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  tw: { flag:'🇹🇼', name:'Taiwan',         cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  hk: { flag:'🇭🇰', name:'Hong Kong',      cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  mo: { flag:'🇲🇴', name:'Macau',          cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  cn: { flag:'🇨🇳', name:'China',          cov:'Mainland China · works without a VPN for data', groups:[{label:'📶 Data plans', cats:apacCats()}, cnUnlimited()] },
+  au: { flag:'🇦🇺', name:'Australia',      cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+  nz: { flag:'🇳🇿', name:'New Zealand',    cov:'4G/5G coverage · Instant activation', groups:[{label:null, cats:apacCats()}] },
+};
+/* accent colors for the APAC tail */
+Object.keys(DEST).forEach((k,i) => { if (!DEST[k].acc) DEST[k].acc = TAIL_ACC[i % TAIL_ACC.length]; });
+const TOP_SIX = ['pk','tr','my','sa','ae','gb'];
+
+/* ---------- nav / reveal / counters ---------- */
+/* ---------- mobile menu ---------- */
+const menuBtn = document.getElementById('menuBtn');
+const mobilePanel = document.getElementById('mobilePanel');
+menuBtn.addEventListener('click', () => {
+  const open = mobilePanel.classList.toggle('open');
+  menuBtn.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open);
+});
+mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobilePanel.classList.remove('open'); menuBtn.classList.remove('open');
+}));
+
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), {passive:true});
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.15});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+function countUp(el, target, ms){
+  if (reduce){ el.textContent = target; return; }
+  const t0 = performance.now();
+  (function tick(t){
+    const p = Math.min((t - t0)/ms, 1);
+    el.textContent = Math.round(target*(1 - Math.pow(1-p,3)));
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const heroIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){
+    countUp(document.getElementById('cTrial'), 1, 900);
+    countUp(document.getElementById('cMinutes'), 3, 1200);
+    heroIO.disconnect();
+  }
+}), {threshold:.4});
+heroIO.observe(document.querySelector('.hero-trust'));
+
+/* ---------- helpers ---------- */
+const minPrice = d => Math.min(...d.groups.flatMap(g => g.cats.flatMap(c => c.p.map(x => x.pr))));
+
+/* ---------- ticker ---------- */
+(function(){
+  const items = Object.values(DEST).map(d =>
+    `<span>${d.flag} ${d.name} <b>from $${minPrice(d).toFixed(2)}</b></span>`).join('');
+  document.getElementById('tickerTrack').innerHTML = items + items;
+})();
+
+/* ---------- destination explorer ---------- */
+const destSection = document.getElementById('destinations');
+const tabsEl = document.getElementById('destTabs');
+const grid = document.getElementById('pkgGrid');
+const grpPills = document.getElementById('grpPills');
+const dFlag = document.getElementById('dFlag'), dName = document.getElementById('dName'),
+      dCov = document.getElementById('dCov'), dFrom = document.getElementById('dFrom'),
+      dCovFlags = document.getElementById('dCovFlags'), dNote = document.getElementById('dNote');
+const DEFAULT_NOTE = `All plans are data-only, hotspot-ready, and delivered instantly. If your country isn't listed, contact us on <a href='https://www.instagram.com/connectkro.pk?igsh=aHp3YmZqajd0MnFh' target='_blank' rel='noopener'><b>Instagram</b></a> or <a href='https://wa.me/923001221286' target='_blank' rel='noopener'><b>WhatsApp</b></a>! A one-time \u20A81,500 membership fee applies on monthly packages.`;
+let activeKey = 'pk', activeGroup = 0;
+
+TOP_SIX.forEach(key => {
+  const d = DEST[key];
+  const b = document.createElement('button');
+  b.className = 'dtab'; b.role = 'tab'; b.dataset.key = key;
+  b.innerHTML = `${d.flag} ${d.name}`;
+  b.addEventListener('click', () => selectDest(key));
+  tabsEl.appendChild(b);
+});
+/* dropdown for every other destination */
+const moreWrap = document.createElement('div');
+moreWrap.className = 'more-dest';
+const moreSel = document.createElement('select');
+moreSel.className = 'more-select';
+moreSel.setAttribute('aria-label','More destinations');
+moreSel.innerHTML = '<option value="">🌏 More destinations…</option>' +
+  Object.keys(DEST).filter(k => !TOP_SIX.includes(k))
+    .map(k => `<option value="${k}">${DEST[k].flag} ${DEST[k].name}</option>`).join('');
+moreSel.addEventListener('change', () => { if (moreSel.value) selectDest(moreSel.value); });
+moreWrap.appendChild(moreSel);
+tabsEl.appendChild(moreWrap);
+
+function applyAccent(){
+  const d = DEST[activeKey];
+  destSection.style.setProperty('--dacc', d.acc.l);
+  destSection.style.setProperty('--dacc-rgb', d.acc.lr);
+}
+function pkgCard(p, i){
+  const d = DEST[activeKey];
+  const el = document.createElement('div');
+  el.className = 'pkg' + (p.best ? ' best' : '');
+  const gbMatch = p.a.match(/^([\d.]+)\s*GB$/i);
+  const per = gbMatch ? `\u2248 $${(p.pr/parseFloat(gbMatch[1])).toFixed(2)} / GB \u00b7 hotspot \u2713` : (p.a === 'Unlimited' ? 'Truly unlimited \u00b7 hotspot \u2713' : 'Perfect first try \u00b7 hotspot \u2713');
+  const amt = p.a === 'Unlimited' ? `<span class="unl">Unlimited</span>` : p.a.replace(/\s*(GB|MB)/i, ' <small>$1</small>');
+  const msg = `Salaam! I want the ${d.name} eSIM: ${p.a} / ${p.d} ($${p.pr.toFixed(2)} \u2248 ${pkr(p.pr)}). Please share the details.`;
+  el.innerHTML = `
+    ${p.best ? '<div class="ribbon">Best value</div>' : (p.trial ? '<div class="ribbon" style="background:var(--gold);color:#2A1900">Try it first</div>' : '')}
+    <div class="gb">${amt}</div>
+    <div class="days">${p.d} validity</div>
+    <div class="price mono">$${p.pr.toFixed(2)}</div>
+    <div class="price-pkr mono">${pkr(p.pr)}</div>
+    <div class="per mono">${per}</div>
+    <a class="btn btn-dest" href="${waMsg(msg)}" target="_blank" rel="noopener">Get on WhatsApp <span class="arr">\u2192</span></a>`;
+  return el;
+}
+function renderGroup(){
+  const d = DEST[activeKey];
+  const g = d.groups[activeGroup];
+  grid.innerHTML = '';
+  let i = 0;
+  g.cats.forEach(cat => {
+    const h = document.createElement('div');
+    h.className = 'pkg-cat';
+    h.innerHTML = `<b>${cat.t}</b>`;
+    grid.appendChild(h);
+    setTimeout(() => h.classList.add('show'), reduce ? 0 : 50 + i*70);
+    cat.p.forEach(p => {
+      const el = pkgCard(p, i);
+      grid.appendChild(el);
+      setTimeout(() => el.classList.add('show'), reduce ? 0 : 80 + i*70);
+      i++;
+    });
+  });
+}
+function selectDest(key){
+  activeKey = key; activeGroup = 0;
+  const d = DEST[key];
+  tabsEl.querySelectorAll('.dtab').forEach(t => t.classList.toggle('active', t.dataset.key === key));
+  const sel = tabsEl.querySelector('.more-select');
+  if (sel){
+    const inDropdown = !TOP_SIX.includes(key);
+    sel.value = inDropdown ? key : '';
+    sel.classList.toggle('active', inDropdown);
+  }
+  dFlag.textContent = d.flag; dName.textContent = d.name;
+  dCov.textContent = d.cov || '';
+  dCov.style.display = d.cov ? '' : 'none';
+  if (d.covFlags){
+    dCovFlags.style.display = 'flex';
+    dCovFlags.innerHTML = d.covFlags.map(f => `<span>${f}</span>`).join('');
+  } else dCovFlags.style.display = 'none';
+  dFrom.textContent = 'from $' + minPrice(d).toFixed(2) + ' \u00b7 ' + pkr(minPrice(d));
+  dNote.innerHTML = d.note || DEFAULT_NOTE;
+  if (d.groups.length > 1){
+    grpPills.style.display = 'flex';
+    grpPills.innerHTML = '';
+    d.groups.forEach((g, gi) => {
+      const b = document.createElement('button');
+      b.className = 'gpill' + (gi === 0 ? ' active' : '');
+      b.textContent = g.label;
+      b.addEventListener('click', () => {
+        activeGroup = gi;
+        grpPills.querySelectorAll('.gpill').forEach((x,xi) => x.classList.toggle('active', xi === gi));
+        renderGroup();
+      });
+      grpPills.appendChild(b);
+    });
+  } else grpPills.style.display = 'none';
+  applyAccent();
+  renderGroup();
+}
+selectDest('pk');
+document.querySelectorAll('.dchip[data-dest]').forEach(c =>
+  c.addEventListener('click', () => selectDest(c.dataset.dest)));
+
+/* ---------- eSIM card tilt ---------- */
+const card = document.getElementById('esimCard');
+const vis = document.querySelector('.hero-vis');
+if (!reduce && matchMedia('(pointer:fine)').matches){
+  vis.addEventListener('mousemove', e => {
+    const r = vis.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - .5;
+    const y = (e.clientY - r.top)/r.height - .5;
+    card.style.transform = `translate(-50%,-50%) rotateY(${x*18}deg) rotateX(${-y*14}deg)`;
+  });
+  vis.addEventListener('mouseleave', () => card.style.transform = 'translate(-50%,-50%)');
+}
+
+/* ---------- hero canvas ---------- */
+const cv = document.getElementById('arcCanvas');
+const ctx = cv.getContext('2d');
+let W, H, arcs = [], stars = [];
+function palette(){
+  return { hues:['48,109,40','168,144,31','12,83,13'], star:'18,56,14' };
+}
+function sizeCanvas(){
+  const r = cv.getBoundingClientRect();
+  cv.width = r.width*devicePixelRatio; cv.height = r.height*devicePixelRatio;
+  ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  W = r.width; H = r.height; buildArcs();
+}
+function buildArcs(){
+  arcs = []; stars = [];
+  const cx = W/2, cy = H/2, n = 7;
+  for (let i = 0; i < n; i++){
+    const ang = (i/n)*Math.PI*2 + .4;
+    const rad = Math.min(W,H)*(.42 + Math.random()*.12);
+    arcs.push({x1:cx,y1:cy,x2:cx+Math.cos(ang)*rad,y2:cy+Math.sin(ang)*rad,
+      bend:(Math.random()-.5)*160,t:Math.random(),speed:.0016+Math.random()*.002,hi:i%3});
+  }
+  for (let i = 0; i < 26; i++)
+    stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.4,ph:Math.random()*6.28});
+}
+function qpoint(a,t){
+  const mx = (a.x1+a.x2)/2 - (a.y2-a.y1)/6 + a.bend*.3;
+  const my = (a.y1+a.y2)/2 + (a.x2-a.x1)/6 + a.bend*.3;
+  const u = 1-t;
+  return {x:u*u*a.x1+2*u*t*mx+t*t*a.x2, y:u*u*a.y1+2*u*t*my+t*t*a.y2, mx, my};
+}
+function draw(time){
+  const pal = palette();
+  ctx.clearRect(0,0,W,H);
+  stars.forEach(s => {
+    const o = .2 + Math.abs(Math.sin(time*.001+s.ph))*.4;
+    ctx.fillStyle = `rgba(${pal.star},${o*.5})`;
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.28); ctx.fill();
+  });
+  arcs.forEach(a => {
+    const hue = pal.hues[a.hi], p0 = qpoint(a,0);
+    ctx.strokeStyle = `rgba(${hue},.2)`; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(a.x1,a.y1); ctx.quadraticCurveTo(p0.mx,p0.my,a.x2,a.y2); ctx.stroke();
+    ctx.fillStyle = `rgba(${hue},.6)`;
+    ctx.beginPath(); ctx.arc(a.x2,a.y2,3,0,6.28); ctx.fill();
+    if (!reduce){
+      a.t += a.speed; if (a.t > 1) a.t = 0;
+      for (let k = 0; k < 6; k++){
+        const tt = a.t - k*.02; if (tt < 0) continue;
+        const p = qpoint(a,tt);
+        ctx.fillStyle = `rgba(${hue},${.9-k*.15})`;
+        ctx.beginPath(); ctx.arc(p.x,p.y,2.6-k*.35,0,6.28); ctx.fill();
+      }
+    }
+  });
+  if (!reduce) requestAnimationFrame(draw);
+}
+sizeCanvas(); addEventListener('resize', sizeCanvas); requestAnimationFrame(draw);
+
+/* ---------- delivery chat ---------- */
+const chatIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  chatIO.disconnect();
+  document.querySelectorAll('.bubble').forEach((b,i) =>
+    setTimeout(() => b.classList.add('show'), reduce ? 0 : 500 + i*850));
+}), {threshold:.35});
+chatIO.observe(document.getElementById('chatStage'));
+
+
+/* ---------- eSIM compatibility checker ---------- */
+const DEVICES = {
+  'Apple': ['iPhone 17','iPhone 17 Pro','iPhone 17 Pro Max','iPhone 17e','iPhone Air','iPhone 16','iPhone 16 Plus','iPhone 16 Pro','iPhone 16 Pro Max','iPhone 16e','iPhone 15','iPhone 15 Plus','iPhone 15 Pro','iPhone 15 Pro Max','iPhone 14','iPhone 14 Plus','iPhone 14 Pro','iPhone 14 Pro Max','iPhone 13','iPhone 13 mini','iPhone 13 Pro','iPhone 13 Pro Max','iPhone 12','iPhone 12 mini','iPhone 12 Pro','iPhone 12 Pro Max','iPhone 11','iPhone 11 Pro','iPhone 11 Pro Max','iPhone XS','iPhone XS Max','iPhone XR','iPhone SE (2020)','iPhone SE (2022)'],
+  'Samsung': ['Galaxy S26','Galaxy S26+','Galaxy S26 Ultra','Galaxy S25','Galaxy S25+','Galaxy S25 Ultra','Galaxy S25 Slim','Galaxy S25 FE','Galaxy S24','Galaxy S24+','Galaxy S24 Ultra','Galaxy S24 FE','Galaxy S23','Galaxy S23+','Galaxy S23 Ultra','Galaxy S23 FE','Galaxy S22','Galaxy S22+','Galaxy S22 Ultra','Galaxy S21 5G','Galaxy S21+ 5G','Galaxy S21 Ultra 5G','Galaxy S21 FE 5G','Galaxy S20','Galaxy S20 5G','Galaxy S20+','Galaxy S20+ 5G','Galaxy S20 Ultra','Galaxy S20 Ultra 5G','Galaxy S20 FE','Galaxy Z Fold7','Galaxy Z Fold6','Galaxy Z Fold5','Galaxy Z Fold4','Galaxy Z Fold3 5G','Galaxy Z Fold2 5G','Galaxy Fold','Galaxy Z Flip7','Galaxy Z Flip7 FE','Galaxy Z Flip6','Galaxy Z Flip5','Galaxy Z Flip4','Galaxy Z Flip3 5G','Galaxy Z Flip 5G','Galaxy Z Flip','Galaxy Z TriFold','Galaxy Note 20','Galaxy Note 20 Ultra','Galaxy Note 20 Ultra 5G','Galaxy A56 5G','Galaxy A55 5G','Galaxy A54 5G','Galaxy A36 5G','Galaxy A35 5G','Galaxy A73 5G','Galaxy A23 5G','Galaxy XCover 7','Galaxy XCover 7 Pro'],
+  'Google Pixel': ['Pixel 10','Pixel 10 Pro','Pixel 10 Pro XL','Pixel 10 Pro Fold','Pixel 9','Pixel 9 Pro','Pixel 9 Pro XL','Pixel 9a','Pixel 9 Pro Fold','Pixel 8','Pixel 8 Pro','Pixel 8a','Pixel 7','Pixel 7 Pro','Pixel 7a','Pixel 6','Pixel 6 Pro','Pixel 6a','Pixel 5','Pixel 5a 5G','Pixel 4','Pixel 4 XL','Pixel 4a','Pixel 4a 5G','Pixel 3','Pixel 3 XL','Pixel 3a','Pixel 3a XL','Pixel 2','Pixel 2 XL','Pixel Fold'],
+  'Xiaomi / Redmi / POCO': ['Xiaomi 15','Xiaomi 15 Ultra','Xiaomi 15T','Xiaomi 15T Pro','Xiaomi 14','Xiaomi 14 Pro','Xiaomi 14T','Xiaomi 14T Pro','Xiaomi 13','Xiaomi 13 Pro','Xiaomi 13 Lite','Xiaomi 13T','Xiaomi 13T Pro','Xiaomi 12T Pro','Redmi Note 15 Pro','Redmi Note 15 Pro+','Redmi Note 14 Pro','Redmi Note 14 Pro+','Redmi Note 13 Pro 5G','Redmi Note 13 Pro+ 5G','POCO F8 Pro','POCO F8 Ultra','POCO X7'],
+  'OnePlus': ['OnePlus 13','OnePlus 13R','OnePlus 13T','OnePlus 12','OnePlus 12R','OnePlus 11','OnePlus Open'],
+  'Oppo': ['Find X8','Find X8 Pro','Find X6','Find X6 Pro','Find X5','Find X5 Pro','Find X3','Find X3 Pro','Find N3','Find N3 Flip','Find N2 Flip','Reno 14','Reno 14 Pro','Reno 13','Reno 13 Pro','Reno 12','Reno 12 Pro','Reno 11','Reno 11 Pro','Reno 9A','Reno 6 Pro 5G'],
+  'Vivo / iQOO': ['Vivo X200','Vivo X200 Pro','Vivo X100','Vivo X100 Pro','Vivo X90','Vivo X90 Pro','Vivo X80 Pro','Vivo V40','Vivo V40 Pro','Vivo V30','Vivo V30 Pro','Vivo V29','iQOO 13','iQOO 12'],
+  'Motorola': ['Edge 60','Edge 60 Pro','Edge 60 Ultra','Edge 60 Fusion','Edge 50','Edge 50 Pro','Edge 50 Ultra','Edge 50 Fusion','Edge 50 Neo','Edge 40','Edge 40 Pro','Edge 40 Neo','Razr 50','Razr 50 Ultra','Razr 2024','Razr 2024+','Razr 40','Razr 40 Ultra','Razr 2023','Razr 2023+','Razr 2022','Razr 2019','Razr 5G','Moto G85','Moto G75','Moto G55','Moto G54','Moto G35','Moto G34','Moto G Power 5G (2024)','Moto G Power 5G (2025)','Moto G Stylus 5G (2024)','Moto G Stylus 5G (2025)','ThinkPhone 25','ThinkPhone'],
+  'Honor': ['Magic 7 Pro','Magic 7 Ultimate','Magic 6 Pro','Magic 6 Ultimate','Magic 5 Pro','Magic 4 Pro','Magic V3','Magic V2','Honor 200','Honor 200 Pro','Honor 90'],
+  'Sony Xperia': ['Xperia 1 VI','Xperia 1 V','Xperia 1 IV','Xperia 5 V','Xperia 5 IV','Xperia 10 V','Xperia 10 IV','Xperia 10 III Lite','Xperia Ace III'],
+  'Other Brands': ['Nothing Phone (3)','Nothing Phone (3a Pro)','Nothing Phone (2)','Nothing Phone (2a)','Asus ROG Phone 9','Asus ROG Phone 9 Pro','Asus Zenfone 12 Ultra','Asus Zenfone 11 Ultra','Asus Zenfone 10','Realme 14 Pro+','Realme GT 8 Pro','Realme GT 7','Realme GT 2 Pro','Realme GT Neo 3','Nokia/HMD Skyline','Nokia/HMD XR21','Nokia/HMD X30','Nokia/HMD G60 5G','Huawei Pura 70 Pro','Huawei Pura 70 Ultra','Huawei Mate 40 Pro','Huawei P40','Huawei P40 Pro','Fairphone 5','Fairphone 4','Rakuten Mini','Rakuten Big','Rakuten Hand'],
+};
+const compatGrid = document.getElementById('compatGrid');
+const brandIco = {
+  'Apple': `<svg viewBox="0 0 24 24" width="19" height="19" fill="#111111" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>`,
+  'Samsung': `<svg viewBox="0 0 24 24" width="22" height="22" fill="#1428A0" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19.8166 10.2808l.0459 2.6934h-.023l-.7793-2.6934h-1.2837v3.3925h.8481l-.0458-2.785h.023l.8366 2.785h1.2264v-3.3925zm-16.149 0l-.6418 3.427h.9284l.4699-3.1175h.0229l.4585 3.1174h.9169l-.6304-3.4269zm5.1805 0l-.424 2.6132h-.023l-.424-2.6132H6.5788l-.0688 3.427h.8596l.023-3.0832h.0114l.573 3.0831h.8711l.5731-3.083h.023l.0228 3.083h.8596l-.0802-3.4269zm-7.2664 2.4527c.0343.0802.0229.1949.0114.2522-.0229.1146-.1031.2292-.3324.2292-.2177 0-.3438-.126-.3438-.3095v-.3323H0v.2636c0 .7679.6074.9971 1.2493.9971.6189 0 1.1346-.2178 1.2149-.7794.0458-.298.0114-.4928 0-.5616-.1605-.722-1.467-.9283-1.5588-1.3295-.0114-.0688-.0114-.1375 0-.1834.023-.1146.1032-.2292.3095-.2292.2063 0 .321.126.321.3095v.2063h.8595v-.2407c0-.745-.6762-.8596-1.1576-.8596-.6074 0-1.1117.2063-1.2034.7564-.023.149-.0344.2866.0114.4585.1376.7106 1.364.9169 1.5358 1.3524m11.152 0c.0343.0803.0228.1834.0114.2522-.023.1146-.1032.2292-.3324.2292-.2178 0-.3438-.126-.3438-.3095v-.3323h-.917v.2636c0 .7564.596.9857 1.2379.9857.6189 0 1.1232-.2063 1.2034-.7794.0459-.298.0115-.4814 0-.5616-.1375-.7106-1.4327-.9284-1.5243-1.318-.0115-.0688-.0115-.1376 0-.1835.0229-.1146.1031-.2292.3094-.2292.1948 0 .321.126.321.3095v.2063h.848v-.2407c0-.745-.6647-.8596-1.146-.8596-.6075 0-1.1004.1948-1.192.7564-.023.149-.023.2866.0114.4585.1376.7106 1.341.9054 1.513 1.3524m2.8882.4585c.2407 0 .3094-.1605.3323-.2522.0115-.0343.0115-.0917.0115-.126v-2.533h.871v2.4642c0 .0688 0 .1948-.0114.2292-.0573.6419-.5616.8482-1.192.8482-.6303 0-1.1346-.2063-1.192-.8482 0-.0344-.0114-.1604-.0114-.2292v-2.4642h.871v2.533c0 .0458 0 .0916.0115.126 0 .0917.0688.2522.3095.2522m7.1518-.0344c.2522 0 .3324-.1605.3553-.2522.0115-.0343.0115-.0917.0115-.126v-.4929h-.3553v-.5043H24v.917c0 .0687 0 .1145-.0115.2292-.0573.6303-.596.8481-1.2034.8481-.6075 0-1.1461-.2178-1.2034-.8481-.0115-.1147-.0115-.1605-.0115-.2293v-1.444c0-.0574.0115-.172.0115-.2293.0802-.6419.596-.8482 1.2034-.8482s1.1347.2063 1.2034.8482c.0115.1031.0115.2292.0115.2292v.1146h-.8596v-.1948s0-.0803-.0115-.1261c-.0114-.0802-.0802-.2521-.3438-.2521-.2521 0-.321.1604-.3438.2521-.0115.0458-.0115.1032-.0115.1605v1.5702c0 .0458 0 .0916.0115.126 0 .0917.0917.2522.3323.2522"/></svg>`,
+  'Google Pixel': `<svg viewBox="0 0 24 24" width="18" height="18" fill="#4285F4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>`
+};
+// Brands beyond the three above (real logos not vector-verified here) get a
+// plain colored initial badge instead of a hand-drawn brand mark — safer
+// than shipping an inaccurate logo.
+function brandBadge(brand){
+  if (brandIco[brand]) return brandIco[brand];
+  const initial = brand.replace(/[^A-Za-z]/g,'')[0] || '?';
+  return `<span class="brand-ico__initial">${initial}</span>`;
+}
+function brandSlug(brand){
+  return brand.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
+Object.entries(DEVICES).forEach(([brand, list]) => {
+  const col = document.createElement('div');
+  col.className = 'compat-col ' + brandSlug(brand);
+  col.innerHTML = `<h3><span class="brand-ico">${brandBadge(brand)}</span>${brand}</h3>
+    <ul>${list.map(m => `<li data-m="${m.toLowerCase()}">${m}</li>`).join('')}</ul>`;
+  compatGrid.appendChild(col);
+});
+const compatInput = document.getElementById('compatInput');
+const compatResult = document.getElementById('compatResult');
+compatInput.addEventListener('input', () => {
+  const q = compatInput.value.trim().toLowerCase();
+  const items = compatGrid.querySelectorAll('li');
+  if (!q){
+    items.forEach(li => li.classList.remove('hl','dim'));
+    compatResult.textContent = ''; compatResult.className = 'compat-result';
+    return;
+  }
+  let hits = 0;
+  items.forEach(li => {
+    const match = li.dataset.m.includes(q);
+    li.classList.toggle('hl', match);
+    li.classList.toggle('dim', !match);
+    if (match) hits++;
+  });
+  if (hits > 0){
+    compatResult.textContent = `\u2705 Great news! ${hits} matching model${hits>1?'s':''} support${hits>1?'':'s'} eSIM. You're ready to connect.`;
+    compatResult.className = 'compat-result yes';
+  } else {
+    compatResult.innerHTML = `Hmm, not finding that one. Dial <b>*#06#</b> to check for an EID, or message us on WhatsApp and we'll confirm.`;
+    compatResult.className = 'compat-result no';
+  }
+});
+
+/* ---------- reviews ---------- */
+const QUOTES = [
+  {t:'Bought the Saudi eSIM before Umrah. Landed in Jeddah, data was already working. Family group video call from the airport — flawless.', n:'Ahmed R.', w:'Lahore → Jeddah', a:'A'},
+  {t:'Started with the $1 trial to test it. Worked so well I bought the 20 GB monthly the same day.', n:'Fatima K.', w:'Karachi → Istanbul', a:'F'},
+  {t:'Visiting family in Pakistan from Manchester — had local data before I even reached baggage claim. Brilliant.', n:'Sana M.', w:'Manchester → Islamabad', a:'S'},
+  {t:'One APAC eSIM covered Thailand, Singapore and Japan on the same trip. No swapping, nothing. Magic.', n:'Bilal H.', w:'Bangkok → Singapore → Tokyo', a:'B'},
+  {t:'Delivery to WhatsApp in under 5 minutes. Tapped the link, installed, done. Easiest travel purchase ever.', n:'Omar S.', w:'Dubai trip', a:'O'},
+  {t:'UK Unlimited for a week was perfect — streamed, mapped and video-called without once checking my usage.', n:'Hira A.', w:'Lahore → London', a:'H'},
+];
+(function(){
+  const html = q => `<div class="qcard"><div class="stars">★★★★★</div>"${q.t}"
+    <div class="who"><span class="av">${q.a}</span><span><b>${q.n}</b><span>${q.w}</span></span></div></div>`;
+  const set = QUOTES.map(html).join('');
+  document.getElementById('quoteTrack').innerHTML = set + set;
+})();
+</script>
+</body>
+</html>

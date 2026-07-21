@@ -1,0 +1,66 @@
+/*
+ * UsageMeter — every color here is a --status-{tone} / --status-{tone}-soft
+ * token (see styles/tokens.css). No inline hex, no brand tokens (--mint,
+ * --gold, etc.) are used for the fill/track — status color must read
+ * consistently regardless of brand hue, per the dataviz skill.
+ */
+
+.ck-usage-meter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.ck-usage-meter__track {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 15px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ck-usage-meter__track--good {
+  background: var(--status-good-soft);
+}
+.ck-usage-meter__track--warning {
+  background: var(--status-warning-soft);
+}
+.ck-usage-meter__track--critical {
+  background: var(--status-critical-soft);
+}
+
+.ck-usage-meter__fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.ck-usage-meter__track--good .ck-usage-meter__fill {
+  background: var(--status-good);
+}
+.ck-usage-meter__track--warning .ck-usage-meter__fill {
+  background: var(--status-warning);
+}
+.ck-usage-meter__track--critical .ck-usage-meter__fill {
+  background: var(--status-critical);
+}
+
+/* Value label: always normal text-ink color, never the status hue — text
+   never wears the data color, identity comes from the bar alone. */
+.ck-usage-meter__value {
+  flex: 0 0 auto;
+  min-width: 42px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck-usage-meter__fill {
+    transition: none;
+  }
+}

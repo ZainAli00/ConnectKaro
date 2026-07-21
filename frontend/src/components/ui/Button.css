@@ -1,0 +1,60 @@
+.ck-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 800;
+  border-radius: 999px;
+  border: none;
+  position: relative;
+  white-space: nowrap;
+  transition:
+    transform .25s cubic-bezier(.34, 1.56, .64, 1),
+    box-shadow .3s,
+    border-color .3s,
+    color .3s;
+}
+.ck-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+.ck-btn:active {
+  transform: scale(.98);
+}
+.ck-btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* sizes */
+.ck-btn--sm { padding: 10px 18px; font-size: 13.5px; }
+.ck-btn--md { padding: 14px 26px; font-size: 15px; }
+.ck-btn--lg { padding: 16px 32px; font-size: 16.5px; }
+
+/* variants */
+.ck-btn--mint {
+  background: linear-gradient(115deg, var(--mint), var(--mint-strong));
+  color: var(--paper);
+}
+.ck-btn--mint:hover:not(:disabled) {
+  box-shadow: 0 14px 36px rgba(12, 83, 13, .4);
+}
+
+.ck-btn--gold {
+  background: var(--gold);
+  color: #2A1900;
+}
+.ck-btn--gold:hover:not(:disabled) {
+  box-shadow: 0 14px 36px rgba(232, 155, 28, .4);
+}
+
+.ck-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+}
+.ck-btn--ghost:hover:not(:disabled) {
+  border-color: var(--mint);
+  color: var(--mint-strong);
+}

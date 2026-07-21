@@ -1,0 +1,23 @@
+.ck-spinner {
+  display: inline-block;
+  position: relative;
+}
+
+.ck-spinner__ring {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2.5px solid var(--line);
+  border-top-color: var(--mint);
+  animation: ck-spin .8s linear infinite;
+}
+
+@keyframes ck-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck-spinner__ring { animation-duration: 1.6s; }
+}

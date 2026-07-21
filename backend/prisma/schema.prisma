@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  ACTIVE
+  CANCELLED
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  displayName  String
+  isActive     Boolean   @default(true)
+  tokenVersion Int       @default(0)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  orders       Order[]   @relation("OrderCreatedBy")
+}
+
+model Order {
+  id                   String       @id @default(cuid())
+  orderId              String       @unique
+  iccid                String       @unique
+  customerName         String
+  customerContact      String
+  destinationCode      String
+  destinationLabel     String
+  planLabel            String
+  notes                String?      @db.Text
+  status               OrderStatus  @default(ACTIVE)
+
+  lastUsageTotalKb     Int?
+  lastUsageUsedKb      Int?
+  lastUsageRemainingKb Int?
+  lastUsageStatus      String?
+  lastUsageExpiryAt    DateTime?
+  lastUsageSyncedAt    DateTime?
+
+  createdByAdminId     String
+  createdByAdmin       AdminUser        @relation("OrderCreatedBy", fields: [createdByAdminId], references: [id])
+  snapshots            UsageSnapshot[]
+
+  deletedAt            DateTime?
+  createdAt            DateTime         @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  @@index([customerName])
+  @@index([status])
+  @@index([deletedAt])
+}
+
+model UsageSnapshot {
+  id          String    @id @default(cuid())
+  orderId     String
+  order       Order     @relation(fields: [orderId], references: [id])
+  totalKb     Int
+  usedKb      Int
+  remainingKb Int
+  status      String
+  expiryAt    DateTime?
+  fetchedAt   DateTime  @default(now())
+
+  @@index([orderId, fetchedAt])
+}

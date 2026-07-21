@@ -1,0 +1,21 @@
+.ck-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.ck-login-form__error {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--status-critical);
+  background: var(--status-critical-soft);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.ck-login-form__submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 4px;
+}

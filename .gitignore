@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# env files (never commit real secrets)
+.env
+.env.local
+.env.*.local
+
+# build output
+dist/
+build/
+
+# logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# editors
+.vscode/
+.idea/
+
+# postgres local data dir (if using docker-compose bind mount)
+pgdata/

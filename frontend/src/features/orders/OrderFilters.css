@@ -1,0 +1,16 @@
+.ck-order-filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) 1fr 1fr;
+  gap: 14px;
+  align-items: end;
+}
+
+.ck-order-filters > * {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .ck-order-filters {
+    grid-template-columns: 1fr;
+  }
+}

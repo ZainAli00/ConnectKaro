@@ -1,0 +1,21 @@
+.ck-admin-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ck-admin-orders__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ck-admin-orders__header > :first-child {
+  flex: 1 1 480px;
+}
+
+.ck-admin-orders__new-btn {
+  flex: 0 0 auto;
+}

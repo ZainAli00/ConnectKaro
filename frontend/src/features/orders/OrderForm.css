@@ -1,0 +1,78 @@
+.ck-order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 640px;
+}
+
+.ck-order-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 560px) {
+  .ck-order-form__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.ck-order-form__error {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--status-critical);
+  background: var(--status-critical-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.ck-order-form__textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.ck-order-form__submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* Post-create success panel */
+.ck-order-form__success {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.ck-order-form__success-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.ck-order-form__order-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--mint-soft);
+  border: 1.5px dashed var(--mint);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.ck-order-form__order-id {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--mint-strong);
+  letter-spacing: 0.03em;
+}
+
+.ck-order-form__success-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,44 @@
+.ck-lookup-form__card {
+  width: 100%;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ck-lookup-form__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.ck-lookup-form__title {
+  font-size: 26px;
+  color: var(--ink);
+}
+
+.ck-lookup-form__subtitle {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.ck-lookup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ck-lookup-form__hint {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: -6px;
+}
+
+.ck-lookup-form__submit {
+  width: 100%;
+  margin-top: 4px;
+}

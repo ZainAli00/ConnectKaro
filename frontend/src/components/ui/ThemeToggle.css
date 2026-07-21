@@ -1,0 +1,16 @@
+.ck-theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  flex: 0 0 40px;
+  transition: border-color .25s, transform .25s;
+}
+.ck-theme-toggle:hover {
+  border-color: var(--mint);
+  transform: translateY(-2px);
+}

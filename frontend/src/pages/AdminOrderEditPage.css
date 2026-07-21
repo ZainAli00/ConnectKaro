@@ -1,0 +1,39 @@
+.ck-order-edit {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.ck-order-edit__card {
+  padding: 34px 36px;
+}
+
+.ck-order-edit__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ck-order-edit__heading-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 14px;
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.ck-order-edit__heading-title {
+  font-size: 19px;
+}
+
+.ck-order-edit__heading-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-top: 4px;
+}

@@ -1,0 +1,77 @@
+.ck-dest-chart {
+  padding: 28px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ck-dest-chart__title {
+  font-size: 17px;
+}
+
+.ck-dest-chart__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ck-dest-chart__row {
+  display: grid;
+  grid-template-columns: 160px 1fr 40px;
+  align-items: center;
+  gap: 14px;
+}
+
+.ck-dest-chart__label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ck-dest-chart__track {
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .ck-dest-chart__track {
+  background: rgba(255, 255, 255, .06);
+}
+
+.ck-dest-chart__fill {
+  display: block;
+  height: 100%;
+  min-width: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mint), var(--mint-strong));
+  transition: width .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ck-dest-chart__fill {
+    transition: none;
+  }
+}
+
+.ck-dest-chart__value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+}
+
+@media (max-width: 560px) {
+  .ck-dest-chart__row {
+    grid-template-columns: 96px 1fr 32px;
+    gap: 10px;
+  }
+  .ck-dest-chart__label {
+    font-size: 12.5px;
+  }
+}

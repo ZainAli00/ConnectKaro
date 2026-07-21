@@ -1,0 +1,106 @@
+.ck-sidebar {
+  width: 268px;
+  flex: 0 0 268px;
+  background: linear-gradient(165deg, var(--sidebar-bg-start), var(--sidebar-bg-end) 72%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 26px 18px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, .18);
+  z-index: 60;
+}
+
+.ck-sidebar__brand {
+  padding: 4px 10px 26px;
+}
+
+.ck-sidebar__brand .ck-logo {
+  color: var(--sidebar-ink);
+  font-size: 21px;
+}
+.ck-sidebar__brand .ck-logo b {
+  color: #8FE07E;
+}
+
+.ck-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ck-sidebar__section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sidebar-ink-muted);
+  padding: 4px 12px 10px;
+}
+
+.ck-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 14px;
+  border-radius: 13px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--sidebar-ink-muted);
+  transition: background .2s, color .2s, transform .2s;
+}
+.ck-sidebar__link:hover {
+  background: var(--sidebar-hover-bg);
+  color: var(--sidebar-ink);
+}
+.ck-sidebar__link--active {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-ink);
+  box-shadow: inset 0 0 0 1.5px var(--sidebar-border);
+}
+
+.ck-sidebar__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .08);
+  color: inherit;
+  transition: background .2s;
+}
+.ck-sidebar__link--active .ck-sidebar__icon {
+  background: rgba(255, 255, 255, .18);
+}
+
+.ck-sidebar__spacer {
+  flex: 1;
+}
+
+.ck-sidebar__foot {
+  padding: 14px 12px 4px;
+  border-top: 1px solid var(--sidebar-border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sidebar-ink-muted);
+}
+
+@media (max-width: 880px) {
+  .ck-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 200;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-big);
+    transition: transform .3s cubic-bezier(.22, 1, .36, 1);
+  }
+  .ck-sidebar--open {
+    transform: translateX(0);
+  }
+}
