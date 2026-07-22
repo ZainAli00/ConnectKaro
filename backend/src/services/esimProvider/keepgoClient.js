@@ -36,8 +36,8 @@ const client = axios.create({
  */
 function buildAuthHeaders() {
   return {
-    'X-Api-Key': config.esimSupplier.apiKey,
-    'X-Access-Token': config.esimSupplier.accessToken,
+    'apiKey': config.esimSupplier.apiKey,
+    'accessToken': config.esimSupplier.accessToken,
   };
 }
 
